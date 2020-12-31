@@ -17,15 +17,15 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         {
             InitializeComponent();
         }
-        /*
-        // noi apelam functiile din WorldbuildingDatabase
-        async void OnWorldSaveButtonClicked(object sender, EventArgs e)
+        
+        // apelam functiile din WorldbuildingDatabase
+        /*async void OnWorldSaveButtonClicked(object sender, EventArgs e)
         {
-            
-        }
+            var vworld = ()
+        }*/
 
 
-
+        /*
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var slist = (ShopList)BindingContext;

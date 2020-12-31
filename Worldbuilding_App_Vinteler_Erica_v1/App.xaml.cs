@@ -16,9 +16,11 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
             {
                 if (database == null)
                 {
-                    database = new
-                   WorldbuildingDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+                    database = new WorldbuildingDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
                    LocalApplicationData), "Worldbuilding.db3"));
+                        /*
+                   ShoppingListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+                   LocalApplicationData), "ShoppingList.db3"));*/
                 }
                 return database;
             }

@@ -13,46 +13,47 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductPage : ContentPage
     {
-        ShopList sl;
-        public ProductPage(ShopList slist)
+        World wd;
+        public ProductPage(World vworld)
         {
             InitializeComponent();
-            sl = slist;
+            wd = vworld;
         }
-        async void OnSaveButtonClicked(object sender, EventArgs e)
+        async void OnWorldSaveButtonClicked(object sender, EventArgs e)
         {
-            var product = (Product)BindingContext;
-            await App.Database.SaveProductAsync(product);
-            listView.ItemsSource = await App.Database.GetProductsAsync();
+            var world = (World)BindingContext;
+            await App.Database.SaveWorldAsync(world);
+            listView.ItemsSource = await App.Database.GetWorldListAsync();
         }
-        async void OnDeleteButtonClicked(object sender, EventArgs e)
+        async void OnWorldDeleteButtonClicked(object sender, EventArgs e)
         {
-            var product = (Product)BindingContext;
-            await App.Database.DeleteProductAsync(product);
-            listView.ItemsSource = await App.Database.GetProductsAsync();
+            var world = (World)BindingContext;
+            await App.Database.DeleteWorldAsync(world);
+            listView.ItemsSource = await App.Database.GetWorldListAsync();
         }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetProductsAsync();
+            listView.ItemsSource = await App.Database.GetWorldListAsync();
         }
-        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        /*
+        async void OnWorldViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
-            Product p;
+            World w;
             if (e.SelectedItem != null)
             {
-                p = e.SelectedItem as Product;
+                w = e.SelectedItem as World;
                 var lp = new ListProduct()
                 {
-                    ShopListID = sl.ID,
-                    ProductID = p.ID
+                    ShopListID = wd.ID,
+                    ProductID = w.ID
                 };
-                await App.Database.SaveListProductAsync(lp);
+                await App.Database.SaveWorldAsync(lp);
                 p.ListProducts = new List<ListProduct> { lp };
 
                 await Navigation.PopAsync();
             }
         }
+        */
     }
 }

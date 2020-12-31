@@ -16,11 +16,11 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Text="Save" Clicked="OnSaveButtonClicked" />
-                <Button Grid.Column="1" Text="Delete" Clicked="OnDeleteButtonClicked"/>
+                <Button Text="Save" Clicked="OnWorldSaveButtonClicked" />
+                <Button Grid.Column="1" Text="Delete" Clicked="OnWorldDeleteButtonClicked"/>
                 <ListView Grid.Row="1" x:Name="listView"
-                          Margin="20"
-                          ItemSelected="OnListViewItemSelected">
+                          Margin="20">
+                          <!--ItemSelected="OnWorldViewItemSelected">-->
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Description}" />
