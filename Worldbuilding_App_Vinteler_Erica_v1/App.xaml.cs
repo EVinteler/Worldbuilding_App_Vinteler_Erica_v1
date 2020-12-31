@@ -9,16 +9,16 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
 {
     public partial class App : Application
     {
-        static ShoppingListDatabase database;
-        public static ShoppingListDatabase Database
+        static WorldbuildingDatabase database;
+        public static WorldbuildingDatabase Database
         {
             get
             {
                 if (database == null)
                 {
                     database = new
-                   ShoppingListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
-                   LocalApplicationData), "ShoppingList.db3"));
+                   WorldbuildingDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+                   LocalApplicationData), "Worldbuilding.db3"));
                 }
                 return database;
             }

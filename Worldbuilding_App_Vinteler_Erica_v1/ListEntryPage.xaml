@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Worldbuilding_App_Vinteler_Erica_v1.ListEntryPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Shopping List" Clicked="OnShopListAddedClicked" />
+        <ToolbarItem Text="Add World" Clicked="OnWorldAddedClicked" />
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected">
+    <ListView x:Name="listView" Margin="20" ItemSelected="OnWorldViewItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Description}" Detail="{Binding Date}" />
+                <TextCell Text="{Binding WorldName}" />
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

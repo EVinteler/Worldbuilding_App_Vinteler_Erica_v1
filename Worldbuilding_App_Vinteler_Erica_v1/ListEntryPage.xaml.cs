@@ -20,23 +20,31 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetShopListsAsync();
+            // pentru ca listView din .xaml sa stie care lista sa o afiseze, folosim functia din WorldbuildingDatabase
+            // care ne returneaza elemente de tip world
+            listView.ItemsSource = await App.Database.GetWorldListAsync();
         }
-        async void OnShopListAddedClicked(object sender, EventArgs e)
+        async void OnWorldAddedClicked(object sender, EventArgs e)
         {
+            // nw creeaza o noua pagina de tip Lista spre care trimitem ca argument
+            // un nou element de tip World (o inregistrare in tabelul World
             await Navigation.PushAsync(new ListPage
             {
-                BindingContext = new ShopList()
+                BindingContext = new World()
             });
         }
-        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+
+        async void OnWorldViewItemSelected (object sender, SelectedItemChangedEventArgs e)
         {
+            // daca elementul selectat nu este null, cream o noua pagina de tip ListPage
+            // unde argumentul e elementul nostru transmis ca element de tip World
             if (e.SelectedItem != null)
             {
                 await Navigation.PushAsync(new ListPage
                 {
-                    BindingContext = e.SelectedItem as ShopList
-                });
+                    BindingContext = e.SelectedItem as World
+                }
+                );
             }
         }
     }

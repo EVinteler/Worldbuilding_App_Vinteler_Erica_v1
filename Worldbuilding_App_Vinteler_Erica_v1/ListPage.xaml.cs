@@ -17,6 +17,15 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         {
             InitializeComponent();
         }
+        /*
+        // noi apelam functiile din WorldbuildingDatabase
+        async void OnWorldSaveButtonClicked(object sender, EventArgs e)
+        {
+            
+        }
+
+
+
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var slist = (ShopList)BindingContext;
@@ -46,5 +55,6 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
 
             listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
         }
+        */
     }
 }
