@@ -11,27 +11,27 @@ using Worldbuilding_App_Vinteler_Erica_v1.Models;
 namespace Worldbuilding_App_Vinteler_Erica_v1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListPage : ContentPage
+    public partial class ListPageCharacters : ContentPage
     {
-        public ListPage()
+        public ListPageCharacters()
         {
             InitializeComponent();
         }
-        
+
         // apelam functiile din WorldbuildingDatabase
-        async void OnWorldSaveButtonClicked(object sender, EventArgs e)
+        async void OnCharacterSaveButtonClicked(object sender, EventArgs e)
         {
-            //await DisplayAlert("OnWorldSaveButtonClicked", "Opened [OnWorldSaveButtonClicked].", "Ok.");
-            var vworld = (World)BindingContext;
-            await App.Database.SaveWorldAsync(vworld);
+            //await DisplayAlert("OnCharacterSaveButtonClicked", "Opened [OnCharacterSaveButtonClicked].", "Ok.");
+            var vchara = (Character)BindingContext;
+            await App.Database.SaveCharacterAsync(vchara);
             await Navigation.PopAsync();
         }
 
-        async void OnWorldDeleteButtonClicked(object sender, EventArgs e)
+        async void OnCharacterDeleteButtonClicked(object sender, EventArgs e)
         {
-            //await DisplayAlert("OnWorldDeleteButtonClicked", "Opened [OnWorldDeleteButtonClicked].", "Ok.");
-            var vworld = (World)BindingContext;
-            await App.Database.DeleteWorldAsync(vworld);
+            //await DisplayAlert("OnCharacterDeleteButtonClicked", "Opened [OnCharacterDeleteButtonClicked].", "Ok.");
+            var vchara = (Character)BindingContext;
+            await App.Database.DeleteCharacterAsync(vchara);
             await Navigation.PopAsync();
         }
         /*

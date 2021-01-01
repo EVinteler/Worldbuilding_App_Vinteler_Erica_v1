@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Worldbuilding_App_Vinteler_Erica_v1.ListPageStories">
+    <ContentPage.Content >
+        <StackLayout Margin="20">
+            <Editor Placeholder="Enter the name for the story."
+                    Text="{Binding StoryName}"
+                    HeightRequest="40">
+            </Editor>
+            <Editor Placeholder="Enter the genre for the story."
+                    Text="{Binding StoryGenre}"
+                    HeightRequest="40">
+            </Editor>
+            <Editor Placeholder="Enter the plot for the story."
+                    Text="{Binding StoryPlotDesc}"
+                    HeightRequest="200">
+            </Editor>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save" BackgroundColor="LightSeaGreen" Clicked="OnStorySaveButtonClicked" />
+                <Button Grid.Column="1" Text="Delete" BackgroundColor="#DB5461" Clicked="OnStoryDeleteButtonClicked"/>
+
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Detail="{Binding WorldName}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -11,27 +11,27 @@ using Worldbuilding_App_Vinteler_Erica_v1.Models;
 namespace Worldbuilding_App_Vinteler_Erica_v1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ListPage : ContentPage
+    public partial class ListPageStories : ContentPage
     {
-        public ListPage()
+        public ListPageStories()
         {
             InitializeComponent();
         }
-        
+
         // apelam functiile din WorldbuildingDatabase
-        async void OnWorldSaveButtonClicked(object sender, EventArgs e)
+        async void OnStorySaveButtonClicked(object sender, EventArgs e)
         {
-            //await DisplayAlert("OnWorldSaveButtonClicked", "Opened [OnWorldSaveButtonClicked].", "Ok.");
-            var vworld = (World)BindingContext;
-            await App.Database.SaveWorldAsync(vworld);
+            //await DisplayAlert("OnStorySaveButtonClicked", "Opened [OnStorySaveButtonClicked].", "Ok.");
+            var vstory = (Story)BindingContext;
+            await App.Database.SaveStoryAsync(vstory);
             await Navigation.PopAsync();
         }
 
-        async void OnWorldDeleteButtonClicked(object sender, EventArgs e)
+        async void OnStoryDeleteButtonClicked(object sender, EventArgs e)
         {
-            //await DisplayAlert("OnWorldDeleteButtonClicked", "Opened [OnWorldDeleteButtonClicked].", "Ok.");
-            var vworld = (World)BindingContext;
-            await App.Database.DeleteWorldAsync(vworld);
+            //await DisplayAlert("OnStoryDeleteButtonClicked", "Opened [OnStoryDeleteButtonClicked].", "Ok.");
+            var vstory = (Story)BindingContext;
+            await App.Database.DeleteStoryAsync(vstory);
             await Navigation.PopAsync();
         }
         /*

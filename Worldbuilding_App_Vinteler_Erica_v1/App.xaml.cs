@@ -30,7 +30,16 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new ListEntryPage());
+            MainPage = new NavigationPage(new ListEntryPage())
+            {
+                BarBackgroundColor = Color.LightSeaGreen
+            };
+            /*new NavigationPage (new MyPage ()) {
+             BarBackgroundColor = Color.Green, BarTextColor = Color.White   
+            };
+            BackgroundColor="LightSeaGreen"
+            BackgroundColor="Lime"
+            BackgroundColor="#DB5461"*/
         }
 
         protected override void OnStart()

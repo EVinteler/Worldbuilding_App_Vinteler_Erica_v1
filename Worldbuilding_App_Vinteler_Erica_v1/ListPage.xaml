@@ -12,23 +12,9 @@
                     Text="{Binding WorldLore}"
                     HeightRequest="200">
             </Editor>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button Text="Save" Clicked="OnWorldSaveButtonClicked" />
-                <Button Grid.Column="1" Text="Delete" Clicked="OnWorldDeleteButtonClicked"/>
+            <Button Text="Save" BackgroundColor="LightSeaGreen" Clicked="OnWorldSaveButtonClicked" />
+            <Button Grid.Column="1" Text="Delete" BackgroundColor="#DB5461" Clicked="OnWorldDeleteButtonClicked"/>
 
-                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Detail="{Binding WorldName}" />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                
-            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

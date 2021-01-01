@@ -4,7 +4,16 @@
              x:Class="Worldbuilding_App_Vinteler_Erica_v1.ListEntryPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add World" Clicked="OnWorldAddedClicked" />
+        <ToolbarItem Text="Add Story" />
+        <ToolbarItem Text="Add Character" Clicked="OnCharacterAddedClicked" />
     </ContentPage.ToolbarItems>
+    <ListView x:Name="listViewCharacter" Margin="20" ItemSelected="OnCharacterViewItemSelected">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding CharacterName}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
     <ListView x:Name="listView" Margin="20" ItemSelected="OnWorldViewItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
