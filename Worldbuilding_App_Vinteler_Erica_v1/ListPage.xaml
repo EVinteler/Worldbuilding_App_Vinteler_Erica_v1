@@ -4,18 +4,22 @@
              x:Class="Worldbuilding_App_Vinteler_Erica_v1.ListPage">
     <ContentPage.Content >
         <StackLayout Margin="20">
-            <Editor Placeholder="Enter the description of the shopping list"
-                    Text="{Binding Description}"
-                    HeightRequest="100">
+            <Editor Placeholder="Enter the name of the world."
+                    Text="{Binding WorldName}"
+                    HeightRequest="40">
             </Editor>
-            <Button Text="Add/Choose Item to buy"/> <!--Clicked="OnChooseButtonClicked"/>-->
+            <Editor Placeholder="Enter the description of the world."
+                    Text="{Binding WorldLore}"
+                    HeightRequest="200">
+            </Editor>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Text="Save"/> <!--Clicked="OnSaveButtonClicked" />-->
-                <Button Grid.Column="1" Text="Delete"/> <!--Clicked="OnDeleteButtonClicked"/>-->
+                <Button Text="Save" Clicked="OnWorldSaveButtonClicked" />
+                <Button Grid.Column="1" Text="Delete" Clicked="OnWorldDeleteButtonClicked"/>
+
                 <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -23,6 +27,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                
             </Grid>
         </StackLayout>
     </ContentPage.Content>

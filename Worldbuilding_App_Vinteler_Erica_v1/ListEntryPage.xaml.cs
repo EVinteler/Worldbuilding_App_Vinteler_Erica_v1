@@ -26,6 +26,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         }
         async void OnWorldAddedClicked(object sender, EventArgs e)
         {
+            await DisplayAlert("OnWorldAddedClick", "Opened [OnWorldAddedClick].", "Ok.");
             // nw creeaza o noua pagina de tip Lista spre care trimitem ca argument
             // un nou element de tip World (o inregistrare in tabelul World
             await Navigation.PushAsync(new ListPage
@@ -36,6 +37,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
 
         async void OnWorldViewItemSelected (object sender, SelectedItemChangedEventArgs e)
         {
+            await DisplayAlert("OnWorldViewItemSelected", "Opened [OnWorldViewItemSelected].", "Ok.");
             // daca elementul selectat nu este null, cream o noua pagina de tip ListPage
             // unde argumentul e elementul nostru transmis ca element de tip World
             if (e.SelectedItem != null)

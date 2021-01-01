@@ -36,7 +36,6 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
         {
             return _database.DeleteAsync(world);
         }
-        // SEE IF U RLY NEED GetWorldListAsync()
         public Task<List<World>> GetWorldListAsync()
         {
             // returneaza o lista de obiecte world
