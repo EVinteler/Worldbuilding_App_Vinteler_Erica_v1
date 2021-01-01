@@ -11,7 +11,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Models
     {
         [PrimaryKey, AutoIncrement]
         public int StoryID { get; set; }
-        [Unique, NotNull]
+        [NotNull]
         public string StoryName { get; set; }
         public string StoryGenre { get; set; }
         public string StoryPlotDesc { get; set; }

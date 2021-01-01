@@ -50,6 +50,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
            .FirstOrDefaultAsync();
         }
 
+
             /*** CHARACTERS ***/
         // Task returneaza un obiect async, in cazul nostru de tip int
         public Task<int> SaveCharacterAsync(Character character)
