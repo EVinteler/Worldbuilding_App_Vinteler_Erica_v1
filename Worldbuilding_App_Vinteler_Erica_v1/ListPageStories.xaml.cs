@@ -38,21 +38,25 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            //var worldd = (World)BindingContext;
-
+            listViewStoryWorld.ItemsSource = await App.Database.GetStoryListAsync();
             listViewWorld.ItemsSource = await App.Database.GetWorldListAsync();
         }
-        
-        /*
-        async void OnChooseButtonClicked(object sender, EventArgs e)
+        async void OnWorldChooseButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ProductPage((ShopList)
-           this.BindingContext)
+            var worldd = (World)BindingContext;
+            var vstory = (Story)this.BindingContext;
+
+            // la apasarea pe un element World, apelam functia de mai jos care ne insereaza id-ul respectiv in tabelul Story
+            await App.Database.SelectFromWorldListAsync(worldd.WorldID, vstory);
+            
+
+            //await Navigation.PopAsync();
+            /*
+            await Navigation.PushAsync(new ProductPage((ShopList)this.BindingContext)
             {
                 BindingContext = new Product()
             });
-
+            */
         }
-        */
     }
 }

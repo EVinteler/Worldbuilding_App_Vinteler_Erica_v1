@@ -16,6 +16,15 @@
                     Text="{Binding StoryPlotDesc}"
                     HeightRequest="200">
             </Editor>
+
+            <ListView x:Name="listViewStoryWorld" Margin="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Detail="{Binding StoryWorldID}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -24,10 +33,11 @@
                 <Button Text="Save" BackgroundColor="LightSeaGreen" Clicked="OnStorySaveButtonClicked" />
                 <Button Grid.Column="1" Text="Delete" BackgroundColor="#DB5461" Clicked="OnStoryDeleteButtonClicked"/>
 
+                <Button Text="Choose World" Clicked="OnWorldChooseButtonClicked"/>
                 <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listViewWorld" Margin="20">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Detail="{Binding WorldName}" />
+                            <TextCell Detail="{Binding WorldID}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

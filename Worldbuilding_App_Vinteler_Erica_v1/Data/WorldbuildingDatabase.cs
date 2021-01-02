@@ -146,16 +146,20 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
            .FirstOrDefaultAsync();
         }
 
-        /*
-         * ne trebuie ^ si pentru Character si Story & poate si v
-        public Task<List<Product>> GetListProductsAsync(int shoplistid)
+
+        public Task<int> SelectFromWorldListAsync(int worldID, Story story)
         {
-            return _database.QueryAsync<Product>(
-            "select P.ID, P.Description from Product P"
-            + " inner join ListProduct LP"
-            + " on P.ID = LP.ProductID where LP.ShopListID = ?",
+            // vom updata tabelul story cu WorldID-ul trimis
+            story.WorldID = worldID;
+            return _database.UpdateAsync(story);
+
+            /*
+            return _database.QueryAsync<World>(
+            "select W.WorldID from World W"
+            + " inner join Story S"
+            + " on W.WorldID = LP.ProductID where LP.ShopListID = ?",
             shoplistid);
+            */
         }
-        */
     }
 }
