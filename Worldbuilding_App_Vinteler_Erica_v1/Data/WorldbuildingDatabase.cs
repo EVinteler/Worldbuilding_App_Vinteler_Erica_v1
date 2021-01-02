@@ -152,7 +152,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
 
         public Task<int> SelectFromWorldListAsync(string worldName, Story story)
         {
-            // vom updata tabelul story cu WorldID-ul trimis
+            // vom updata tabelul story cu WorldName-ul trimis
 
             story.WorldName = worldName;
 
@@ -164,13 +164,19 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
 
             return _database.UpdateAsync(story);
         }
-
-        /*public int GetStoryWorldIDAsync(Story story)
+        public Task<int> SelectFromCharacterListAsync(string characterName, Story story)
         {
-            //var worldID = 
-            //Console.WriteLine("GetStoryWorldIDAsync: " + worldID);
-            //return _database.QueryAsync<Story>("select WorldID from Story where StoryID = ?", story.StoryID);
-            return Task.Delay(100).ContinueWith(t => 0);
-        }*/
+            // vom updata tabelul story cu CharacterName-ul trimis
+
+            story.MainCharacterName = characterName;
+
+            //Console.WriteLine("StoryWorldID: " + story.WorldID);
+            //Console.WriteLine("Update: " + _database.UpdateAsync(story));
+            //Console.WriteLine("Update: " + _database.QueryAsync<Story>("select StoryWorldID from Story"));
+
+            //return Task.Delay(100).ContinueWith(t => 0);
+
+            return _database.UpdateAsync(story);
+        }
     }
 }

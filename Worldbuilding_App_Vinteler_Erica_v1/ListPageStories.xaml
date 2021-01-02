@@ -15,27 +15,36 @@
                 </Editor>
                 <Editor Placeholder="Enter the plot for the story."
                         Text="{Binding StoryPlotDesc}"
-                        HeightRequest="200">
+                        HeightRequest="140">
                 </Editor>
 
                 <Label Text="{Binding WorldName}" Margin="20"/> <!-- x:Name="labelViewStoryWorld" -->
+                <Label Text="{Binding MainCharacterName}" Margin="20"/>
 
-                <Grid HeightRequest="40">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Button Text="Save" BackgroundColor="LightSeaGreen" Clicked="OnStorySaveButtonClicked" />
-                    <Button Grid.Column="1" Text="Delete" BackgroundColor="#DB5461" Clicked="OnStoryDeleteButtonClicked"/>
-                </Grid>
+                <Button HeightRequest="40" Text="Save" BackgroundColor="LightSeaGreen" Clicked="OnStorySaveButtonClicked" />
+                <Button HeightRequest="40" Text="Delete" BackgroundColor="#DB5461" Clicked="OnStoryDeleteButtonClicked"/>
 
-                    <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listViewWorld" ItemSelected="OnWorldChooseButtonClicked" Margin="20">
+                <Grid HeightRequest="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                    <ListView x:Name="listViewWorld" BackgroundColor="#DDD78D"  ItemSelected="OnWorldChooseButtonClicked" Margin="5">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextCell Detail="{Binding WorldName}" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+
+                    <ListView Grid.Column="1" x:Name="listViewCharacter" BackgroundColor="LightCoral" ItemSelected="OnCharacterChooseButtonClicked" Margin="5">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Detail="{Binding CharacterName}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
 
             </StackLayout>
             

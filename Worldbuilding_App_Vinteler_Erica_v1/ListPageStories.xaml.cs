@@ -45,6 +45,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
             //labelViewStoryWorld.Text = (String)worldlbl;
 
             listViewWorld.ItemsSource = await App.Database.GetWorldListAsync();
+            listViewCharacter.ItemsSource = await App.Database.GetCharacterListAsync();
         }
         async void OnWorldChooseButtonClicked(object sender, SelectedItemChangedEventArgs e)
         {
@@ -59,6 +60,19 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
 
                 // la apasarea pe un element World, apelam functia de mai jos care ne insereaza id-ul respectiv in tabelul Story
                 await App.Database.SelectFromWorldListAsync(worldd.WorldName, vstory);
+            }
+        }
+        async void OnCharacterChooseButtonClicked(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                // worldd va contine itemul selectat sub forma de element de tip World
+                var charad = (Character)e.SelectedItem;
+                // vstory va fi elementul de tip Story luat de pe pagina curenta
+                var vstory = (Story)BindingContext;
+
+                // la apasarea pe un element Character, apelam functia de mai jos care ne insereaza id-ul respectiv in tabelul Story
+                await App.Database.SelectFromCharacterListAsync(charad.CharacterName, vstory);
             }
         }
     }
