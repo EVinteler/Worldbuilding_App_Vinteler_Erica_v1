@@ -38,25 +38,23 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listViewStoryWorld.ItemsSource = await App.Database.GetStoryListAsync();
+            //listViewStoryWorld = await App.Database.GetStoryListAsync();
             listViewWorld.ItemsSource = await App.Database.GetWorldListAsync();
         }
-        async void OnWorldChooseButtonClicked(object sender, EventArgs e)
+        async void OnWorldChooseButtonClicked(object sender, SelectedItemChangedEventArgs e)
         {
-            var worldd = (World)BindingContext;
-            var vstory = (Story)this.BindingContext;
-
-            // la apasarea pe un element World, apelam functia de mai jos care ne insereaza id-ul respectiv in tabelul Story
-            await App.Database.SelectFromWorldListAsync(worldd.WorldID, vstory);
-            
-
-            //await Navigation.PopAsync();
-            /*
-            await Navigation.PushAsync(new ProductPage((ShopList)this.BindingContext)
+            if (e.SelectedItem != null)
             {
-                BindingContext = new Product()
-            });
-            */
+                // worldd va contine itemul selectat sub forma de element de tip World
+                var worldd = (World)e.SelectedItem;
+                // vstory va fi elementul de tip Story luat de pe pagina curenta
+                var vstory = (Story)BindingContext;
+
+                //await DisplayAlert("OnWorldChooseButtonClicked", "World: " + worldd.WorldID + " Story: " + vstory.StoryID, "Ok.");
+
+                // la apasarea pe un element World, apelam functia de mai jos care ne insereaza id-ul respectiv in tabelul Story
+                await App.Database.SelectFromWorldListAsync(worldd.WorldID, vstory);
+            }
         }
     }
 }

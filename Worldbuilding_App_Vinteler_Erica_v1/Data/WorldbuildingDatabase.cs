@@ -150,8 +150,15 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
         public Task<int> SelectFromWorldListAsync(int worldID, Story story)
         {
             // vom updata tabelul story cu WorldID-ul trimis
+
             story.WorldID = worldID;
-            return _database.UpdateAsync(story);
+
+            // Console.WriteLine("StoryWorldID: " + story.WorldID);
+            Console.WriteLine("Update: " + _database.UpdateAsync(story));
+
+            return Task.Delay(100).ContinueWith(t => 0);
+
+            //return _database.UpdateAsync(story);
 
             /*
             return _database.QueryAsync<World>(
