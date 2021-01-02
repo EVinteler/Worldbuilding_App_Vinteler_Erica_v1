@@ -24,7 +24,7 @@
                 <Button Text="Save" BackgroundColor="LightSeaGreen" Clicked="OnStorySaveButtonClicked" />
                 <Button Grid.Column="1" Text="Delete" BackgroundColor="#DB5461" Clicked="OnStoryDeleteButtonClicked"/>
 
-                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listViewWorld" Margin="20">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Detail="{Binding WorldName}" />

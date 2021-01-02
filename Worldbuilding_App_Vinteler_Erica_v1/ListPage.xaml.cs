@@ -34,25 +34,5 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
             await App.Database.DeleteWorldAsync(vworld);
             await Navigation.PopAsync();
         }
-        /*
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            var worldd = (World)BindingContext;
-
-            listView.ItemsSource = await App.Database.GetWorldListAsync();
-        }
-        *.
-        /*
-        async void OnChooseButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new ProductPage((ShopList)
-           this.BindingContext)
-            {
-                BindingContext = new Product()
-            });
-
-        }
-        */
     }
 }
