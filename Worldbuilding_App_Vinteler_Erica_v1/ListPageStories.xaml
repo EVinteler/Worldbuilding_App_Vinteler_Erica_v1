@@ -18,8 +18,10 @@
                         HeightRequest="140">
                 </Editor>
 
-                <Label Text="{Binding WorldName}" Margin="20"/> <!-- x:Name="labelViewStoryWorld" -->
-                <Label Text="{Binding MainCharacterName}" Margin="20"/>
+                <Label Text="World:" FontAttributes="Bold"/>
+                <Label Text="{Binding WorldName}" Margin="15"/> <!-- x:Name="labelViewStoryWorld" -->
+                <Label Text="Main Character:" FontAttributes="Bold"/>
+                <Label Text="{Binding MainCharacterName}" Margin="15"/>
 
                 <Button HeightRequest="40" Text="Save" BackgroundColor="LightSeaGreen" Clicked="OnStorySaveButtonClicked" />
                 <Button HeightRequest="40" Text="Delete" BackgroundColor="#DB5461" Clicked="OnStoryDeleteButtonClicked"/>
