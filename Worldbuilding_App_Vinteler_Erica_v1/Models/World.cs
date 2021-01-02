@@ -11,7 +11,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Models
     {
         [PrimaryKey, AutoIncrement]
         public int WorldID { get; set; }
-        [Unique, NotNull]
+        [NotNull]
         public string WorldName { get; set; }
         public string WorldLore { get; set; }
     }

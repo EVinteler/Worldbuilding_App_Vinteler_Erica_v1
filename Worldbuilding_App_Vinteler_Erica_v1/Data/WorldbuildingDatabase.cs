@@ -14,23 +14,40 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
         public WorldbuildingDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
+
             _database.CreateTableAsync<World>().Wait();
             _database.CreateTableAsync<Character>().Wait();
             _database.CreateTableAsync<Story>().Wait();
+
+            // dropped table bc i created it wrong lol
+            // i tried to just modify the columns in the table, to delete the World.cs page and remake it
+            // but it didn't work until i dropped the table
+            //var connection = new SQLiteConnection(dbPath);
+            //connection.DropTable<World>();
         }
              /*** WORLD ***/
         // Task returneaza un obiect async, in cazul nostru de tip int
         public Task<int> SaveWorldAsync(World world)
         {
-            if (world.WorldID != 0)
+            // este un try catch doar de forma, pt ca nu imi merge DisplayAlert sau
+            // ceva override ca sa nu imi intre aplicatia in break mode, lol
+            try
             {
-                // in cazul in care exista un element world cu id-ul resp, doar facem update la world in loc sa cream unul nou
-                return _database.UpdateAsync(world);
+                if (world.WorldID != 0)
+                {
+                    // in cazul in care exista un element world cu id-ul resp, doar facem update la world in loc sa cream unul nou=
+                    return _database.UpdateAsync(world);
+                }
+                else
+                {
+                    // in cazut in care nu mai exista element world cu id-ul resp, il cream
+                    return _database.InsertAsync(world);
+                }
             }
-            else
+            catch (Exception e)
             {
-                // in cazut in care nu mai exista element world cu id-ul resp, il cream
-                return _database.InsertAsync(world);
+                //return _database.Rollback();
+                 return Task.Delay(100).ContinueWith(t => 0);
             }
         }
         public Task<int> DeleteWorldAsync(World world)
@@ -55,15 +72,22 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
         // Task returneaza un obiect async, in cazul nostru de tip int
         public Task<int> SaveCharacterAsync(Character character)
         {
-            if (character.CharacterID != 0)
+            try
             {
-                // in cazul in care exista un element Character cu id-ul resp, doar facem update la Character in loc sa cream unul nou
-                return _database.UpdateAsync(character);
+                if (character.CharacterID != 0)
+                {
+                    // in cazul in care exista un element Character cu id-ul resp, doar facem update la Character in loc sa cream unul nou
+                    return _database.UpdateAsync(character);
+                }
+                else
+                {
+                    // in cazut in care nu mai exista element Character cu id-ul resp, il cream
+                    return _database.InsertAsync(character);
+                }
             }
-            else
+            catch (Exception e)
             {
-                // in cazut in care nu mai exista element Character cu id-ul resp, il cream
-                return _database.InsertAsync(character);
+                return Task.Delay(100).ContinueWith(t => 0);
             }
         }
         public Task<int> DeleteCharacterAsync(Character character)
@@ -87,15 +111,22 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
         // Task returneaza un obiect async, in cazul nostru de tip int
         public Task<int> SaveStoryAsync(Story story)
         {
-            if (story.StoryID != 0)
+            try
             {
-                // in cazul in care exista un element Story cu id-ul resp, doar facem update la Story in loc sa cream unul nou
-                return _database.UpdateAsync(story);
+                if (story.StoryID != 0)
+                {
+                    // in cazul in care exista un element Story cu id-ul resp, doar facem update la Story in loc sa cream unul nou
+                    return _database.UpdateAsync(story);
+                }
+                else
+                {
+                    // in cazut in care nu mai exista element Story cu id-ul resp, il cream
+                    return _database.InsertAsync(story);
+                }
             }
-            else
+            catch (Exception e)
             {
-                // in cazut in care nu mai exista element Story cu id-ul resp, il cream
-                return _database.InsertAsync(story);
+                return Task.Delay(100).ContinueWith(t => 0);
             }
         }
         public Task<int> DeleteStoryAsync(Story story)

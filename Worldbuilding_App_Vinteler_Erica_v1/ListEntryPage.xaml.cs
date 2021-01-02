@@ -23,9 +23,9 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
             // pentru ca listView din .xaml sa stie care lista sa o afiseze, folosim functia din WorldbuildingDatabase
             // care ne returneaza elemente de tip world, character si story
             
-            //listView.ItemsSource = await App.Database.GetWorldListAsync();
-            listViewCharacter.ItemsSource = await App.Database.GetCharacterListAsync();
             listViewStory.ItemsSource = await App.Database.GetStoryListAsync();
+            listView.ItemsSource = await App.Database.GetWorldListAsync();
+            listViewCharacter.ItemsSource = await App.Database.GetCharacterListAsync();
 
             // afiseaza si elementele story si characters tot aici dar cu culori diferite :D in .xaml
         }

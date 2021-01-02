@@ -23,7 +23,7 @@
             </Editor>
             <Editor Placeholder="Enter the description for the character."
                     Text="{Binding CharacterDesc}"
-                    HeightRequest="400">
+                    HeightRequest="300">
             </Editor>
                 <Button Text="Save" BackgroundColor="LightSeaGreen" Clicked="OnCharacterSaveButtonClicked" />
                 <Button Grid.Column="1" Text="Delete" BackgroundColor="#DB5461" Clicked="OnCharacterDeleteButtonClicked"/>

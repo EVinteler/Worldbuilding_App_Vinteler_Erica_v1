@@ -32,7 +32,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
 
             MainPage = new NavigationPage(new ListEntryPage())
             {
-                BarBackgroundColor = Color.LightSeaGreen
+                BarBackgroundColor = Color.Black
             };
             /*new NavigationPage (new MyPage ()) {
              BarBackgroundColor = Color.Green, BarTextColor = Color.White   

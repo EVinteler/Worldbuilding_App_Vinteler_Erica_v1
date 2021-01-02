@@ -3,29 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Worldbuilding_App_Vinteler_Erica_v1.ListEntryPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add World" Clicked="OnWorldAddedClicked" />
         <ToolbarItem Text="Add Story" Clicked="OnStoryAddedClicked" />
+        <ToolbarItem Text="Add World" Clicked="OnWorldAddedClicked" />
         <ToolbarItem Text="Add Character" Clicked="OnCharacterAddedClicked" />
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listViewStory" Margin="20" ItemSelected="OnStoryViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding StoryName}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    <ListView x:Name="listViewCharacter" Margin="20" ItemSelected="OnCharacterViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding CharacterName}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    <ListView x:Name="listView" Margin="20" ItemSelected="OnWorldViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding WorldName}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+
+    <StackLayout>
+            <ListView x:Name="listViewStory" BackgroundColor="LightSeaGreen" Margin="10" ItemSelected="OnStoryViewItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding StoryName}" TextColor="Black" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="listView" BackgroundColor="#DDD78D" Margin="10" ItemSelected="OnWorldViewItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding WorldName}" TextColor="Black" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="listViewCharacter" BackgroundColor="LightCoral" Margin="10" ItemSelected="OnCharacterViewItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding CharacterName}" TextColor="Black" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+    </StackLayout>
+
 </ContentPage>
