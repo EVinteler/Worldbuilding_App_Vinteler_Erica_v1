@@ -23,7 +23,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
             // i tried to just modify the columns in the table, to delete the World.cs page and remake it
             // but it didn't work until i dropped the table
             //var connection = new SQLiteConnection(dbPath);
-            //connection.DropTable<World>();
+            //connection.DropTable<Story>();
         }
              /*** WORLD ***/
         // Task returneaza un obiect async, in cazul nostru de tip int
@@ -47,7 +47,8 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
             catch (Exception e)
             {
                 //return _database.Rollback();
-                 return Task.Delay(100).ContinueWith(t => 0);
+                Console.WriteLine("SaveWorldAsync EXCEPTION: " + e);
+                return Task.Delay(100).ContinueWith(t => 0);
             }
         }
         public Task<int> DeleteWorldAsync(World world)
@@ -87,6 +88,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
             }
             catch (Exception e)
             {
+                Console.WriteLine("SaveCharacterAsync EXCEPTION: " + e);
                 return Task.Delay(100).ContinueWith(t => 0);
             }
         }
@@ -126,6 +128,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
             }
             catch (Exception e)
             {
+                Console.WriteLine("SaveStoryAsync EXCEPTION: " + e);
                 return Task.Delay(100).ContinueWith(t => 0);
             }
         }
@@ -147,26 +150,27 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Data
         }
 
 
-        public Task<int> SelectFromWorldListAsync(int worldID, Story story)
+        public Task<int> SelectFromWorldListAsync(string worldName, Story story)
         {
             // vom updata tabelul story cu WorldID-ul trimis
 
-            story.WorldID = worldID;
+            story.WorldName = worldName;
 
-            // Console.WriteLine("StoryWorldID: " + story.WorldID);
-            Console.WriteLine("Update: " + _database.UpdateAsync(story));
+            //Console.WriteLine("StoryWorldID: " + story.WorldID);
+            //Console.WriteLine("Update: " + _database.UpdateAsync(story));
+            //Console.WriteLine("Update: " + _database.QueryAsync<Story>("select StoryWorldID from Story"));
 
-            return Task.Delay(100).ContinueWith(t => 0);
+            //return Task.Delay(100).ContinueWith(t => 0);
 
-            //return _database.UpdateAsync(story);
-
-            /*
-            return _database.QueryAsync<World>(
-            "select W.WorldID from World W"
-            + " inner join Story S"
-            + " on W.WorldID = LP.ProductID where LP.ShopListID = ?",
-            shoplistid);
-            */
+            return _database.UpdateAsync(story);
         }
+
+        /*public int GetStoryWorldIDAsync(Story story)
+        {
+            //var worldID = 
+            //Console.WriteLine("GetStoryWorldIDAsync: " + worldID);
+            //return _database.QueryAsync<Story>("select WorldID from Story where StoryID = ?", story.StoryID);
+            return Task.Delay(100).ContinueWith(t => 0);
+        }*/
     }
 }

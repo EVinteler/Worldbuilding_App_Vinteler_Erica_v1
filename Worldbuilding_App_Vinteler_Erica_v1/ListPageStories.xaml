@@ -18,7 +18,7 @@
                         HeightRequest="200">
                 </Editor>
 
-                <Label Text="{Binding StoryWorldID}" Margin="20"/> <!--x:Name="listViewStoryWorld"-->
+                <Label Text="{Binding WorldName}" Margin="20"/> <!-- x:Name="labelViewStoryWorld" -->
 
                 <Grid HeightRequest="40">
                     <Grid.ColumnDefinitions>

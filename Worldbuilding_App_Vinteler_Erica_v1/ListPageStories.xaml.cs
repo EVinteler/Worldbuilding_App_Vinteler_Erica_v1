@@ -38,7 +38,12 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            //listViewStoryWorld = await App.Database.GetStoryListAsync();
+
+            //var vstory = (Story)BindingContext;
+            //var worldlbl=App.Database.GetStoryWorldIDAsync(vstory);
+            //App.Database.GetStoryWorldIDAsync(vstory);
+            //labelViewStoryWorld.Text = (String)worldlbl;
+
             listViewWorld.ItemsSource = await App.Database.GetWorldListAsync();
         }
         async void OnWorldChooseButtonClicked(object sender, SelectedItemChangedEventArgs e)
@@ -53,7 +58,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
                 //await DisplayAlert("OnWorldChooseButtonClicked", "World: " + worldd.WorldID + " Story: " + vstory.StoryID, "Ok.");
 
                 // la apasarea pe un element World, apelam functia de mai jos care ne insereaza id-ul respectiv in tabelul Story
-                await App.Database.SelectFromWorldListAsync(worldd.WorldID, vstory);
+                await App.Database.SelectFromWorldListAsync(worldd.WorldName, vstory);
             }
         }
     }

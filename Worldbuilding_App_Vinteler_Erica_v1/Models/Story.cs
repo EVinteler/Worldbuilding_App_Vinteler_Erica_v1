@@ -16,8 +16,7 @@ namespace Worldbuilding_App_Vinteler_Erica_v1.Models
         public string StoryGenre { get; set; }
         public string StoryPlotDesc { get; set; }
 
-        public int WorldID { get; set; }
-        [OneToMany]
-        public List<Character> CharacterID { get; set; }
+        public string WorldName { get; set; }
+        public string MainCharacterName { get; set; }
     }
 }
