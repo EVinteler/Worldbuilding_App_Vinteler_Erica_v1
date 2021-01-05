@@ -16,12 +16,11 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
             {
                 if (database == null)
                 {
+                    // daca nu exista baza de date de tipul nostru ^ (wbdatabase) o cream, folosind path-ul corespunzator
                     database = new WorldbuildingDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
                    LocalApplicationData), "Worldbuilding.db3"));
-                        /*
-                   ShoppingListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
-                   LocalApplicationData), "ShoppingList.db3"));*/
                 }
+                // returnam baza de date existenta sau cea creata mai sus
                 return database;
             }
         }
@@ -30,16 +29,12 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         {
             InitializeComponent();
 
+            // cream o noua pagina de navigare, de tip listentrypage
+            // barbackgroundColor este pentru a schimba culoarea de la toolbar
             MainPage = new NavigationPage(new ListEntryPage())
             {
                 BarBackgroundColor = Color.Black
             };
-            /*new NavigationPage (new MyPage ()) {
-             BarBackgroundColor = Color.Green, BarTextColor = Color.White   
-            };
-            BackgroundColor="LightSeaGreen"
-            BackgroundColor="Lime"
-            BackgroundColor="#DB5461"*/
         }
 
         protected override void OnStart()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks; //pt async
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,21 +20,27 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
             // pentru ca listView din .xaml sa stie care lista sa o afiseze, folosim functia din WorldbuildingDatabase
             // care ne returneaza elemente de tip world, character si story
+
+            // elementele de la listViewStory vor avea valorile primite din GetStoryListAsync, metoda din WorldbuildingDatabase
+            // folosim await pentru a pastra asincronicitatea (is that even a word?...) si pt ca avem async la functia noastra OnAppearing()
+            // care face override la cea "de baza"
             
             listViewStory.ItemsSource = await App.Database.GetStoryListAsync();
             listView.ItemsSource = await App.Database.GetWorldListAsync();
             listViewCharacter.ItemsSource = await App.Database.GetCharacterListAsync();
 
-            // afiseaza si elementele story si characters tot aici dar cu culori diferite :D in .xaml
         }
 
             /*** WORLD ***/
         async void OnWorldAddedClicked(object sender, EventArgs e)
         {
             //await DisplayAlert("OnWorldAddedClick", "Opened [OnWorldAddedClick].", "Ok.");
-            // nw creeaza o noua pagina de tip Lista spre care trimitem ca argument
+
+            // PUSHasync ne adauga o noua pagina pe stack-ul de pagini de navigare
+            // pagina va fi de tip ListPage spre care trimitem ca argument
             // un nou element de tip World (o inregistrare in tabelul World)
             await Navigation.PushAsync(new ListPage
             {
@@ -45,8 +51,10 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         async void OnWorldViewItemSelected (object sender, SelectedItemChangedEventArgs e)
         {
             //await DisplayAlert("OnWorldViewItemSelected", "Opened [OnWorldViewItemSelected].", "Ok.");
+
             // daca elementul selectat nu este null, cream o noua pagina de tip ListPage
-            // unde argumentul e elementul nostru transmis ca element de tip World
+            // unde argumentul este itemul selectat "e.selectedItem" ne-a fost transmis
+            // pe care il transmitem ca element de tip World
             if (e.SelectedItem != null)
             {
                 await Navigation.PushAsync(new ListPage
@@ -61,7 +69,9 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         async void OnCharacterAddedClicked(object sender, EventArgs e)
         {
             //await DisplayAlert("OnCharacterAddedClick", "Opened [OnCharacterAddedClick].", "Ok.");
-            // nw creeaza o noua pagina de tip Lista spre care trimitem ca argument
+
+            // ne adauga o noua pagina pe stack-ul de pagini de navigare
+            // pagina va fi de tip ListPageCharacters spre care trimitem ca argument
             // un nou element de tip Character (o inregistrare in tabelul Character)
             await Navigation.PushAsync(new ListPageCharacters
             {
@@ -72,8 +82,10 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         async void OnCharacterViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             //await DisplayAlert("OnCharacterViewItemSelected", "Opened [OnCharacterViewItemSelected].", "Ok.");
-            // daca elementul selectat nu este null, cream o noua pagina de tip ListPage
-            // unde argumentul e elementul nostru transmis ca element de tip Character
+
+            // daca elementul selectat nu este null, cream o noua pagina de tip ListPageCharacters
+            // unde argumentul este itemul selectat "e.selectedItem" ne-a fost transmis
+            // pe care il transmitem ca element de tip Character
             if (e.SelectedItem != null)
             {
                 await Navigation.PushAsync(new ListPageCharacters
@@ -89,7 +101,9 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         async void OnStoryAddedClicked(object sender, EventArgs e)
         {
             //await DisplayAlert("OnStoryAddedClick", "Opened [OnStoryAddedClick].", "Ok.");
-            // nw creeaza o noua pagina de tip Lista spre care trimitem ca argument
+
+            // ne adauga o noua pagina pe stack-ul de pagini de navigare
+            // pagina va fi de tip ListPageStories spre care trimitem ca argument
             // un nou element de tip Story (o inregistrare in tabelul Story)
             await Navigation.PushAsync(new ListPageStories
             {
@@ -100,8 +114,10 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
         async void OnStoryViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             //await DisplayAlert("OnStoryViewItemSelected", "Opened [OnStoryViewItemSelected].", "Ok.");
-            // daca elementul selectat nu este null, cream o noua pagina de tip ListPage
-            // unde argumentul e elementul nostru transmis ca element de tip Story
+
+            // daca elementul selectat nu este null, cream o noua pagina de tip ListPageStories
+            // unde argumentul este itemul selectat "e.selectedItem" ne-a fost transmis
+            // pe care il transmitem ca element de tip Story
             if (e.SelectedItem != null)
             {
                 await Navigation.PushAsync(new ListPageStories

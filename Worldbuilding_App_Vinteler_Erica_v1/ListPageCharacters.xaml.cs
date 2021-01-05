@@ -18,41 +18,32 @@ namespace Worldbuilding_App_Vinteler_Erica_v1
             InitializeComponent();
         }
 
-        // apelam functiile din WorldbuildingDatabase
+        // functiile din pagina noastra curenta sunt apelate cu ajutorul butoanelor/a altor interactiuni
+        // si la randul lor vor apela functiile ce le-am scris la WorldbuildingDatabase
         async void OnCharacterSaveButtonClicked(object sender, EventArgs e)
         {
             //await DisplayAlert("OnCharacterSaveButtonClicked", "Opened [OnCharacterSaveButtonClicked].", "Ok.");
+
+            // variabila vchara va primi elementul de tip world transmis prin BindingContext de la pagina ListEntryPage
+            // cand a apelat functia de a crea aceasta pagina
+            // si va fi transmis ca argument la functia de SaveCharacter
             var vchara = (Character)BindingContext;
             await App.Database.SaveCharacterAsync(vchara);
+            // POPasync ne trimite la pagina anterioara din stack-ul de pagini de navigare
             await Navigation.PopAsync();
         }
 
         async void OnCharacterDeleteButtonClicked(object sender, EventArgs e)
         {
             //await DisplayAlert("OnCharacterDeleteButtonClicked", "Opened [OnCharacterDeleteButtonClicked].", "Ok.");
+
+            // variabila vchara va primi elementul de tip world transmis prin BindingContext de la pagina ListEntryPage
+            // cand a apelat functia de a crea aceasta pagina
+            // si va fi transmis ca argument la functia de DeleteCharacter
             var vchara = (Character)BindingContext;
             await App.Database.DeleteCharacterAsync(vchara);
+            // POPasync ne trimite la pagina anterioara din stack-ul de pagini de navigare
             await Navigation.PopAsync();
         }
-        /*
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            var worldd = (World)BindingContext;
-
-            listView.ItemsSource = await App.Database.GetWorldListAsync();
-        }
-        *.
-        /*
-        async void OnChooseButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new ProductPage((ShopList)
-           this.BindingContext)
-            {
-                BindingContext = new Product()
-            });
-
-        }
-        */
     }
 }

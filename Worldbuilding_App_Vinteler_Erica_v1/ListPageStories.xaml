@@ -19,7 +19,7 @@
                 </Editor>
 
                 <Label Text="World:" FontAttributes="Bold"/>
-                <Label Text="{Binding WorldName}" Margin="15"/> <!-- x:Name="labelViewStoryWorld" -->
+                <Label Text="{Binding WorldName}" Margin="15"/>
                 <Label Text="Main Character:" FontAttributes="Bold"/>
                 <Label Text="{Binding MainCharacterName}" Margin="15"/>
 
